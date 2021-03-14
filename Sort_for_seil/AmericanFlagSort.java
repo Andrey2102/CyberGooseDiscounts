@@ -2,7 +2,14 @@ package Sort_for_seil;
 /*
 За подробностями алгоритма можно посетить "https://en.wikipedia.org/wiki/American_flag_sort"
 */
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.util.Arrays;
+import java.util.Scanner;
+
+
 
 public class AmericanFlagSort {
 
@@ -76,11 +83,90 @@ public class AmericanFlagSort {
    private static int getDigit(int integer, int divisor) {
        return (integer / divisor) % 10;
    }
+    
+    private static void Savemas(Integer[] nums){
 
-   
-        public static void main(String []args){
-         Integer[] nums = new Integer[] { 3, 2, 5, 0, 6, 4, 8, 7, 1, 6 };
+    try(FileWriter writer = new FileWriter("masives.txt", false))
+    {
+       // запись всей строки
+        String text = Arrays.toString(nums);
+        writer.write(text);
+        // запись по символам
+        writer.append('\n');       
+         
+        writer.flush();
+    }
+    catch(IOException ex){
+         
+        System.out.println(ex.getMessage());
+    } 
+
+}
+
+
+
+
+
+private static void creator(){
+    Integer[] nums;
+    String Choice;
+    System.out.println("Ты хочешь (1)отсортировать готовый пример или (2)написать свой пример");
+    Scanner in = new Scanner(System.in);
+    Choice = in.nextLine();
+    int parsic = Integer.parseInt(Choice);
+    switch (parsic) {
+        case 1: 
+        long before = System.currentTimeMillis();
+        nums = new Integer[] { 3, 2, 5, 0, 6, 4, 8, 7, 1, 6 };
            sort(nums);
+           Savemas(nums);
+           long after = System.currentTimeMillis();
+           System.out.println("Время исполнения = " + (after - before) + " мс.");
            System.out.println(Arrays.toString(nums));
+           
+
+           menu();
+                 break;
+        case 2: 
+        Scanner input = new Scanner(System.in); 
+        System.out.println("Enter array length: ");
+        int size = input.nextInt(); 
+        nums = new Integer[size]; 
+        System.out.println("Insert array elements:");        
+        for (int i = 0; i < size; i++) {
+            nums[i] = input.nextInt(); 
+        }    
+        long before2 = System.currentTimeMillis();
+           sort(nums);
+           long after2 = System.currentTimeMillis();
+           System.out.println("Время исполнения = " + (after2 - before2) + " мс.");
+           Savemas(nums);
+           System.out.println(Arrays.toString(nums));
+           menu();
+                 break;
+        default: creator();
+             break;
+            }
+
+}
+
+private static void menu(){    
+    String Choice;
+    System.out.println("Ты что хочешь отсортировать по американскому флагу(yes/no)");
+    Scanner in = new Scanner(System.in);
+    Choice = in.nextLine();
+    switch (Choice) {
+        case "yes": creator(); 
+                 break;
+        case "no": System.exit(0); 
+                 break;
+        default: menu();
+             break;
+            }
+
+}   
+        public static void main(String []args){
+           menu();      
+           
         }
    }
