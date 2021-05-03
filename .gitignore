@@ -1,0 +1,14 @@
+/GooseDiscount/*.iml
+/GooseDiscount/.gradle
+/GooseDiscount/local.properties
+/GooseDiscount/.idea/caches
+/GooseDiscount/.idea/libraries
+/GooseDiscount/.idea/modules.xml
+/GooseDiscount/.idea/workspace.xml
+/GooseDiscount/.idea/navEditor.xml
+/GooseDiscount/.idea/assetWizardSettings.xml
+/GooseDiscount.DS_Store
+/GooseDiscount/build
+/GooseDiscount/captures
+/GooseDiscount.externalNativeBuild
+/GooseDiscount.cxx
