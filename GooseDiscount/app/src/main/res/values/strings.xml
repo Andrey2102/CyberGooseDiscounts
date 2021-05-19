@@ -12,5 +12,18 @@
     <string name="menu_About_us">About us</string>
     <string name="menu_setting">Setting</string>
 
+    <string name="about_info" >
+        <P>We are called geeks and red-eyed, ordinary people think that we live in server rooms or in
+        our mothers basement, eat one doshik and wash ourselves with liquid to clean the monitors
+        (in fact, this is not entirely true).</P>
+        <P>We are engaged only in original and interesting projects, no matter how complex and long
+        they are, as we are always looking for a way to show our creativity = D. </P>
+        <P>Our offices are located in 3 cities 4 of which:</P>
+        <P>-Kherson. Senyavin street, building 5, floor basement.</P>
+
+        <P>-Kiev st.Metallistov, glade, under 3 shop</P>
+        <P>-Bikini Bottom restaurant "Krusty Krabs", on the kitchen stove</P>
+        <P>Phone number: 0 495 786 03 18</P></string>
+
     <string name="home_second">Home Second</string>
 </resources>
