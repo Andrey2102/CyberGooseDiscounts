@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_setings"
+        android:title="Settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_baseline_settings_24"
+        />
+
+    <item
+        android:id="@+id/action_about"
+        android:title="AboutUs"
+        android:orderInCategory="110"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_baseline_person_24"
+        />
+
+    <item
+        android:id="@+id/action_subs"
+        android:title="Subscribe"
+        android:orderInCategory="55"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_baseline_subs_24"
+
+        />
+
+    <item
+        android:id="@+id/action_home"
+        android:title="Home"
+        android:orderInCategory="500"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_baseline_home_24"
+        />
+
+
+
+
+</menu>
