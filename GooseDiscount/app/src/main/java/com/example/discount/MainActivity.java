@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
+import com.example.discount.sub.SubsActivity;
 
 import java.util.ArrayList;
 

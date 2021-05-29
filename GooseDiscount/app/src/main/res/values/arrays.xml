@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <array name="currency">
+    <item >Hryvnia</item>
+    <item > Dollar</item>
+    <item > Euro</item>
+    </array>
+
+    <array name="currency_val">
+        <item >hryvnia</item>
+        <item > dollar</item>
+        <item > Euro</item>
+    </array>
+    
+</resources>

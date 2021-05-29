@@ -1,4 +1,4 @@
-package com.example.discount;
+package com.example.discount.Mall;
 
 import android.os.Bundle;
 

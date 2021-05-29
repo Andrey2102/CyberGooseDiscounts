@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Discount">
-        <activity android:name=".SubsActivity"
+        <activity android:name=".sub.SubsActivity"
             android:label="Subscribe"
             android:parentActivityName=".MainActivity">
             <meta-data

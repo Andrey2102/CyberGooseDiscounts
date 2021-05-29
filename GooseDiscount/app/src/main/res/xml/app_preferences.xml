@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ListPreference
+
+        android:title="Currency"
+        android:key="сurrency"
+        android:defaultValue="bell"
+        android:entries="@array/currency"
+        android:entryValues="@array/currency_val"
+
+        />
+
+</PreferenceScreen>

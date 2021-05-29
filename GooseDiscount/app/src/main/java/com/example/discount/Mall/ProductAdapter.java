@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.discount.ProductItem;
 import com.example.discount.R;
 
 import java.util.ArrayList;
