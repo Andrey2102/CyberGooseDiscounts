@@ -3,6 +3,8 @@ package com.example.discount.Mall;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,11 +15,13 @@ import com.example.discount.R;
 
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements Filterable {
     private ArrayList<ProductItem> arrayListProd;
+    private ArrayList<ProductItem> arrayListProdSearch;
 
     public ProductAdapter(ArrayList<ProductItem> arrayListProd){
         this.arrayListProd=arrayListProd;
+        arrayListProdSearch= new ArrayList<>(arrayListProd);
     }
 
     @NonNull
@@ -44,6 +48,39 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public int getItemCount() {
         return arrayListProd.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return ProductFilter;
+    }
+
+    private Filter ProductFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<ProductItem> FilterList= new ArrayList<>();
+            if(constraint == null || constraint.length()==0){
+                FilterList.addAll(arrayListProdSearch);
+            }else {
+                String FilterPattern = constraint.toString().toLowerCase().trim();
+
+                for(ProductItem item: arrayListProdSearch){
+                    if(item.getNameProduct().toLowerCase().contains(FilterPattern)){
+                        FilterList.add(item);
+                    }
+                }
+            }
+            FilterResults Results = new FilterResults();
+            Results.values = FilterList;
+            return Results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            arrayListProd.clear();
+            arrayListProd.addAll((ArrayList)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder{
 
