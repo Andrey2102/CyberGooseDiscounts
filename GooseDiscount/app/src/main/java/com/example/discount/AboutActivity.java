@@ -5,9 +5,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.discount.sub.SubsActivity;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -27,6 +32,15 @@ public class AboutActivity extends AppCompatActivity {
                 "+(38)068-801-75-75\n" +
                 "Email: cyber_goose@gmail.com");
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.discount_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -34,6 +48,22 @@ public class AboutActivity extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(this);
         }
 
+        if(id==R.id.action_setings){
+            Intent openSettings = new Intent(this, SettingsActivity.class);
+            startActivity(openSettings);
+            return true;
+        }else if(id==R.id.action_about){
+            Intent openAbout = new Intent(this, AboutActivity.class);
+            startActivity(openAbout);
+            return true;}
+        else if(id==R.id.action_subs){
+            Intent openSubs = new Intent(this, SubsActivity.class);
+            startActivity(openSubs);
+            return true;}
+        else if(id==R.id.action_home){
+            Intent openHome = new Intent(this, MainActivity.class);
+            startActivity(openHome);
+            return true;}
 
         return super.onOptionsItemSelected(item);
     }

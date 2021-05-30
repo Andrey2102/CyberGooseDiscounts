@@ -2,6 +2,7 @@ package com.example.discount.Mall;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.discount.Mall.MallItem;
 import com.example.discount.R;
+import com.example.discount.sub.SubsActivity;
 
 import java.util.ArrayList;
 
@@ -27,14 +29,29 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
     {
         public ImageView imageView;
         public TextView text1;
-        public TextView text2;
+        int position;
+
+
 
         public MallHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             imageView=itemView.findViewById(R.id.mallimage);
             text1=itemView.findViewById(R.id.Name);
-            text2=itemView.findViewById(R.id.TVtext);
+
+             itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
+              @Override
+             public void onClick(View v) {
+                  int position = getAdapterPosition();
+                  Log.v("bl", "it is"+ position);
+                  MallItem mall_item = arrayList.get(position);
+                  Intent intent = new Intent(context, SubsActivity.class);
+                  intent.putExtra("imgsub",mall_item.getImageResourse());
+                  intent.putExtra("nameSub", mall_item.getName());
+                  Log.v("bl", "it is"+ mall_item.getName());
+                  context.startActivity(intent);
+              }});
+
         }
 
 
@@ -42,11 +59,10 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
         public void onClick(View v) {
             int position = getAdapterPosition();
             MallItem mall_item = arrayList.get(position);
-
+            Log.v("bl", "it is"+ position);
             Intent intent = new Intent(context, MallActivity.class);
             intent.putExtra("imageRes",mall_item.getImageResourse());
-            intent.putExtra("nameRes", mall_item.getName());
-            intent.putExtra("DescriptionRes", mall_item.getAbout());
+            intent.putExtra("nameRes", mall_item.getName());           ;
             intent.putExtra("recipeRes",mall_item.getRecipe());
             context.startActivity(intent);
         }
@@ -71,7 +87,6 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
         MallItem MallItem = arrayList.get(position);
         holder.imageView.setImageResource(MallItem.getImageResourse());
         holder.text1.setText(MallItem.getName());
-        holder.text2.setText(MallItem.getAbout());
 
     }
 
@@ -84,14 +99,14 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
         public  ImageView  imageView;
         public TextView text1;
-        public TextView text2;
+
 
 
         public mall_recipe(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.mallimage);
             text1=itemView.findViewById(R.id.Name);
-            text2=itemView.findViewById(R.id.TVtext);
+
         }
     }
 

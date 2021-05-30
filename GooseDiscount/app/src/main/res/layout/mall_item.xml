@@ -23,28 +23,33 @@
 
         <TextView
             android:id="@+id/Name"
-            android:layout_width="wrap_content"
+            android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:textColor="@color/black"
-            android:text="TextView"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="35dp"
             android:layout_toEndOf="@+id/mallimage"
             android:layout_toRightOf="@+id/mallimage"
-            android:layout_marginLeft="50dp"/>
+            android:text="TextView"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/TVtext"
+        <Button
+            android:id="@+id/SubsBut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:text="TextView"
-            android:layout_marginTop="5dp"
+            android:layout_below="@id/Name"
+            android:layout_marginStart="67dp"
+            android:layout_marginLeft="67dp"
+            android:layout_marginTop="35dp"
             android:layout_toEndOf="@id/mallimage"
             android:layout_toRightOf="@id/mallimage"
-            android:layout_below="@id/Name"
-            android:layout_marginLeft="50dp"/>
+            android:text="Subscribe"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -7,9 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
@@ -24,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Наша главная страница
+
         ArrayList<MallItem> mallArray = new ArrayList();
         mallArray.add(new MallItem(R.drawable.gouse,"АТБ","Продуктовий магазин", "бла"));
         mallArray.add(new MallItem(R.drawable.gouse,"Cільпо","Продуктовий магазин", "бла"));
@@ -44,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
-        //Наши настройки
+
+
 
 
     }

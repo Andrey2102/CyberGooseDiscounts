@@ -15,7 +15,7 @@ public class MallItem {
     public MallItem(int imageResourse, String text1, String text2, String recipe){
         this.imageResourse= imageResourse;
         this.Name=text1;
-        this.aboutmall=text2;
+        //this.aboutmall=text2;
         this.recipe = recipe;
     }
     public int getImageResourse(){
@@ -24,9 +24,7 @@ public class MallItem {
     public String getName(){
         return Name;
     }
-    public String getAbout(){
-        return aboutmall;
-    }
+    //public String getAbout(){return aboutmall; }
     public String getRecipe(){return recipe;}
 
 
