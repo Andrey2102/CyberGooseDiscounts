@@ -19,7 +19,7 @@
         <ListPreference
             android:title="Сurrency"
             app:key="CURRENCY"
-            android:defaultValue="false"
+            android:defaultValue="hryvnia"
             android:entries="@array/items_name"
             android:entryValues="@array/items_value"/>
 

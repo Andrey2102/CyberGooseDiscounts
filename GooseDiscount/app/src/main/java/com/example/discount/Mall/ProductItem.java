@@ -1,11 +1,5 @@
 package com.example.discount.Mall;
 
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.stream.Stream;
-
 public class ProductItem {
     private int imageProduct;
     private  String NameProduct;

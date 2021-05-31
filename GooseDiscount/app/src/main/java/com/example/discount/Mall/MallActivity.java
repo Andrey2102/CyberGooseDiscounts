@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,18 +42,36 @@ public class MallActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mall);
         setContentView(R.layout.activity_mall);
+       double i=1;
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.thisid);
         TextView Titlel = findViewById(R.id.TitletextView);
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if(sharedPreferences.getBoolean("OTHER",true)){
+        if(!sharedPreferences.getBoolean("OTHER",true)){
             layout.setBackgroundColor(Color.WHITE);
         }else{
             layout.setBackgroundColor(Color.parseColor("#9932CC"));
         }
 
+        String valuta = sharedPreferences.getString("CURRENCY", "1");
+        Log.i("chek","it is " + valuta);
+
+        if(valuta.equals("1")){
+            i=1;
+        } else if(valuta.equals("0.030")){
+            i= 0.030;
+            Log.i("chek","it was");
+        }else if(valuta.equals("0.036")){
+            i= 0.036;
+            Log.i("chek","it was too");
+        }
+
+        Log.i("chek","it is " + i);
+
+
+
         ArrayList<ProductItem> ProdArray = new ArrayList();
-        ProdArray.add(new ProductItem(R.drawable.bak, "Баклажан1", "100", "150", "04.05.21 - 05.02.21"));
-        ProdArray.add(new ProductItem(R.drawable.bak, "example", "80", "111", "04.05.21 - 05.02.21"));
+        ProdArray.add(new ProductItem(R.drawable.bak, "Баклажан1", String.valueOf(100*i), String.valueOf(150*i), "04.05.21 - 05.02.21"));
+        ProdArray.add(new ProductItem(R.drawable.bak, "example", String.valueOf(80*i), String.valueOf(111*i), "04.05.21 - 05.02.21"));
         Intent intent = getIntent();
         recyclerView = findViewById(R.id.recycle_item);
         recyclerView.setHasFixedSize(true);
