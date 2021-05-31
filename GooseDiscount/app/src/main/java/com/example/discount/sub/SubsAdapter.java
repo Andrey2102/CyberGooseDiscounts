@@ -40,7 +40,7 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
             itemView.setOnClickListener(this);
             imageView = itemView.findViewById(R.id.mallimagesub);
             text1 = itemView.findViewById(R.id.Namesub);
-            text2 = itemView.findViewById(R.id.TVtextsub);
+
         }
 
         @Override

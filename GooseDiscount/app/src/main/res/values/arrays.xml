@@ -9,8 +9,8 @@
 
     <array name="currency_val">
         <item >hryvnia</item>
-        <item > dollar</item>
-        <item > Euro</item>
+        <item >dollar</item>
+        <item >euro</item>
     </array>
     
 </resources>

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
     {
         public ImageView imageView;
         public TextView text1;
+        boolean changer = true;
         int position;
 
 
@@ -38,14 +40,30 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             itemView.setOnClickListener(this);
             imageView=itemView.findViewById(R.id.mallimage);
             text1=itemView.findViewById(R.id.Name);
+            Button button = (Button) itemView.findViewById(R.id.SubsBut);
+
+            if(changer){
+                button.setText("Subscribe");
+            }else{
+                button.setText("UnSubscribe");
+            }
 
              itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
               @Override
              public void onClick(View v) {
                   int position = getAdapterPosition();
                   MallItem mall_item = arrayList.get(position);
-                  Log.v("bl", "it is"+ position);
                   arrayList.get(position).ChangeSub();
+                  Button button = (Button) itemView.findViewById(R.id.SubsBut);
+                  if(changer){
+                      button.setText("UnSubscribe");
+                      changer = false;
+                  }else{
+                      button.setText("Subscribe");
+                      changer = true;
+                  }
+
+
               }});
 
         }
@@ -72,6 +90,8 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
     @NonNull
     @Override
     public MallAdapter.MallHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mall_item,
                 parent,false);
         MallHolder MallHold = new MallHolder(view);

@@ -6,7 +6,7 @@
 
         android:title="Currency"
         android:key="сurrency"
-        android:defaultValue="bell"
+        android:defaultValue="hryvnia"
         android:entries="@array/currency"
         android:entryValues="@array/currency_val"
 

@@ -41,13 +41,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/Name"
-            android:layout_marginStart="67dp"
-            android:layout_marginLeft="67dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="35dp"
             android:layout_toEndOf="@id/mallimage"
             android:layout_toRightOf="@id/mallimage"
+            android:backgroundTint="@color/button_background_color"
             android:text="Subscribe"
-            android:textColor="@color/black"
+            android:textColor="@color/button_text_color"
             android:textSize="16dp" />
 
 
