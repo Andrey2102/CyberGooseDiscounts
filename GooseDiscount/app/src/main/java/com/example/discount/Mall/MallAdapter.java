@@ -43,13 +43,9 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
               @Override
              public void onClick(View v) {
                   int position = getAdapterPosition();
-                  Log.v("bl", "it is"+ position);
                   MallItem mall_item = arrayList.get(position);
-                  Intent intent = new Intent(context, SubsActivity.class);
-                  intent.putExtra("imgsub",mall_item.getImageResourse());
-                  intent.putExtra("nameSub", mall_item.getName());
-                  Log.v("bl", "it is"+ mall_item.getName());
-                  context.startActivity(intent);
+                  Log.v("bl", "it is"+ position);
+                  arrayList.get(position).ChangeSub();
               }});
 
         }
@@ -57,7 +53,14 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
         @Override
         public void onClick(View v) {
-
+            int position = getAdapterPosition();
+            MallItem mall_item = arrayList.get(position);
+            Log.v("bl", "it is"+ position);
+            Intent intent = new Intent(context, MallActivity.class);
+            intent.putExtra("imageRes",mall_item.getImageResourse());
+            intent.putExtra("nameRes", mall_item.getName());           ;
+            intent.putExtra("recipeRes",mall_item.getRecipe());
+            context.startActivity(intent);
         }
     }
     public MallAdapter(ArrayList<MallItem> arrayList,Context context){

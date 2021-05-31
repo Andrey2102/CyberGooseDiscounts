@@ -18,6 +18,8 @@ public class MallItem {
         this.subs=subs;
         this.recipe = recipe;
     }
+
+
     public int getImageResourse(){
         return imageResourse;
     }
@@ -26,6 +28,17 @@ public class MallItem {
     }
     public boolean getsubs(){return subs; }
     public String getRecipe(){return recipe;}
+
+
+
+
+    public void ChangeSub(){
+        if(subs==true){
+            subs=false;
+        }else {subs=true;}
+
+
+    }
 
 
 }

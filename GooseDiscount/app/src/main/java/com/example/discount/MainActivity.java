@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<MallItem> mallArray;
+    private boolean subsstarter=true;
 
 
 
@@ -35,14 +36,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Наша главная страница
-
-        mallArray = new ArrayList();
-        mallArray.add(new MallItem(R.drawable.gouse,"АТБ",true, "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо",false, "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет",true, "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо",false, "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет",false, "бла"));
         ArrayHelper help = new ArrayHelper();
+        Log.v("bc", "it is"+ help.start);
+        if(help.start){
+        mallArray = new ArrayList();
+        mallArray.add(new MallItem(R.drawable.gouse,"АТБ",false, "бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо", false,"бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет", false,"бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо", false,"бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет", false,"бла"));
+            help.start=false;
+        Log.v("bc2", "it is"+ help.start);
+        }else{
+            mallArray=help.fullArray;
+        }
+
         help.fullArray=mallArray;
 
 
