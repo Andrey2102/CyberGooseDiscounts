@@ -33,14 +33,17 @@ public class SubsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subs);
 
+        ArrayList<MallItem> subsArrayfull = new ArrayList();
         ArrayList<MallItem> subsArray = new ArrayList();
         Intent intent = getIntent();
         Log.v("bl", "it is"+ intent.getStringExtra("nameSub"));
-        if (intent != null) {
-            subsArray.add(new MallItem(R.drawable.gouse,intent.getStringExtra("nameSub"),
-                    "Продуктовий магазин", "бла"));
+        ArrayHelper help = new ArrayHelper();
 
+        subsArrayfull=help.getSomeArray();
+        for(MallItem item: subsArrayfull) {
+            if(item.getsubs()){subsArray.add(item);}
         }
+
         recyclerView=findViewById(R.id.recycle_sub);
         recyclerView.setHasFixedSize(true);
         adapter = new SubsAdapter(subsArray,this);

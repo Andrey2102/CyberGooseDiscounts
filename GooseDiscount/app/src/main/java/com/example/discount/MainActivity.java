@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
+import com.example.discount.sub.ArrayHelper;
 import com.example.discount.sub.SubsActivity;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<MallItem> mallArray;
 
 
 
@@ -34,12 +36,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //Наша главная страница
 
-        ArrayList<MallItem> mallArray = new ArrayList();
-        mallArray.add(new MallItem(R.drawable.gouse,"АТБ","Продуктовий магазин", "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо","Продуктовий магазин", "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет","Продуктовий магазин", "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо","Продуктовий магазин", "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет","Продуктовий магазин", "бла"));
+        mallArray = new ArrayList();
+        mallArray.add(new MallItem(R.drawable.gouse,"АТБ",true, "бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо",false, "бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет",true, "бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо",false, "бла"));
+        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет",false, "бла"));
+        ArrayHelper help = new ArrayHelper();
+        help.fullArray=mallArray;
 
 
         recyclerView=findViewById(R.id.recycle);
@@ -50,10 +54,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
 
-
-
-
     }
+
+
 
     //Наши настройки
     @Override

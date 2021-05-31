@@ -9,13 +9,13 @@ import com.example.discount.R;
 public class MallItem {
     private int imageResourse;
     private  String Name;
-    private String aboutmall;
     private String recipe;
+    private boolean subs;
 
-    public MallItem(int imageResourse, String text1, String text2, String recipe){
+    public MallItem(int imageResourse, String text1, boolean subs, String recipe){
         this.imageResourse= imageResourse;
         this.Name=text1;
-        //this.aboutmall=text2;
+        this.subs=subs;
         this.recipe = recipe;
     }
     public int getImageResourse(){
@@ -24,7 +24,7 @@ public class MallItem {
     public String getName(){
         return Name;
     }
-    //public String getAbout(){return aboutmall; }
+    public boolean getsubs(){return subs; }
     public String getRecipe(){return recipe;}
 
 
