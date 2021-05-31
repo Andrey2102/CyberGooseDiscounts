@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<PreferenceCategory
+    android:title="Theme change">
 
-    <ListPreference
+    <CheckBoxPreference
+        android:title="Theme"
+        android:key="OTHER"
+        app:defaultValue="false"
+        android:summaryOn="Other theme is activated"
+        android:summaryOff="Classic theme is activated"/>
 
-        android:title="Currency"
-        android:key="сurrency"
-        android:defaultValue="hryvnia"
-        android:entries="@array/currency"
-        android:entryValues="@array/currency_val"
+</PreferenceCategory>
 
-        />
+    <PreferenceCategory
+        android:title="Сurrency change">
+        <ListPreference
+            android:title="Сurrency"
+            app:key="CURRENCY"
+            android:defaultValue="false"
+            android:entries="@array/items_name"
+            android:entryValues="@array/items_value"/>
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

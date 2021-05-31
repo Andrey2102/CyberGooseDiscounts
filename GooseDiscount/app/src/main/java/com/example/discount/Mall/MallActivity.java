@@ -1,6 +1,8 @@
 package com.example.discount.Mall;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.app.SearchManager;
 import android.view.inputmethod.EditorInfo;
 
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
@@ -16,8 +19,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NavUtils;
 import androidx.core.view.MenuItemCompat;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +40,15 @@ public class MallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mall);
+        setContentView(R.layout.activity_mall);
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.thisid);
         TextView Titlel = findViewById(R.id.TitletextView);
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(sharedPreferences.getBoolean("OTHER",true)){
+            layout.setBackgroundColor(Color.WHITE);
+        }else{
+            layout.setBackgroundColor(Color.parseColor("#9932CC"));
+        }
 
         ArrayList<ProductItem> ProdArray = new ArrayList();
         ProdArray.add(new ProductItem(R.drawable.bak, "Баклажан1", "100", "150", "04.05.21 - 05.02.21"));

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <array name="currency">
-    <item >Hryvnia</item>
-    <item > Dollar</item>
-    <item > Euro</item>
-    </array>
-
-    <array name="currency_val">
-        <item >hryvnia</item>
-        <item >dollar</item>
-        <item >euro</item>
-    </array>
+    <string-array name="items_name">
+        <item>hryvnia</item>
+        <item>euro</item>
+        <item>dollar</item>
+    </string-array>
     
+    <string-array name="items_value">
+        <item>1</item>
+        <item>0.030</item>
+        <item>0.036</item>
+    </string-array>
+
 </resources>
