@@ -12,44 +12,56 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="182dp"
         android:layout_margin="4dp">
 
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="180dp"
-            android:id="@+id/mallimage"
-            android:padding="6dp"/>
-
-        <TextView
-            android:id="@+id/Name"
-            android:layout_width="189dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="35dp"
+            android:orientation="vertical"
             android:layout_toEndOf="@+id/mallimage"
             android:layout_toRightOf="@+id/mallimage"
-            android:text="TextView"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/SubsBut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/Name"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="35dp"
-            android:layout_toEndOf="@id/mallimage"
-            android:layout_toRightOf="@id/mallimage"
-            android:backgroundTint="@color/button_background_color"
-            android:text="Subscribe"
-            android:textColor="@color/button_text_color"
-            android:textSize="16dp" />
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_toEndOf="@+id/mallimage"
+                android:layout_toRightOf="@+id/mallimage"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/SubsBut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Name"
+
+                android:layout_marginTop="34dp"
+                android:layout_toEndOf="@id/mallimage"
+                android:layout_toRightOf="@id/mallimage"
+                android:backgroundTint="@color/button_background_color"
+                android:text="Subscribe"
+                android:textColor="@color/button_text_color"
+                android:textSize="16dp" />
+
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/mallimage"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:padding="6dp" />
+
+
 
 
     </RelativeLayout>
