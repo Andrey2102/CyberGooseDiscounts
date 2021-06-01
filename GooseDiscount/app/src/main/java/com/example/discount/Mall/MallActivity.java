@@ -43,13 +43,17 @@ public class MallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mall);
         setContentView(R.layout.activity_mall);
        double i=1;
-        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.thisid);
         TextView Titlel = findViewById(R.id.TitletextView);
+
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.thisid);
+        final TextView title = findViewById(R.id.TitletextView);
         if(!sharedPreferences.getBoolean("OTHER",true)){
             layout.setBackgroundColor(Color.WHITE);
+            title.setTextColor(Color.parseColor("#353434"));
         }else{
-            layout.setBackgroundColor(Color.parseColor("#9932CC"));
+            layout.setBackgroundColor(Color.parseColor("#353434"));
+            title.setTextColor(Color.parseColor("#F3F3F3"));
         }
 
         String valuta = sharedPreferences.getString("CURRENCY", "1");

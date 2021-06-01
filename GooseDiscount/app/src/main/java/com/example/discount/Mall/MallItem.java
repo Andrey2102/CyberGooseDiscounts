@@ -12,6 +12,7 @@ public class MallItem {
     private String recipe;
     private boolean subs;
 
+
     public MallItem(int imageResourse, String text1, boolean subs, String recipe){
         this.imageResourse= imageResourse;
         this.Name=text1;
