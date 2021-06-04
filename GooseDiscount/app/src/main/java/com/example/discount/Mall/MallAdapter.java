@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.R;
 import com.example.discount.sub.ArrayHelper;
@@ -20,6 +21,7 @@ import com.example.discount.sub.SubsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
@@ -47,29 +49,54 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             ArrayHelper.fullArray=arrayList;
 
 
-            
-            if(changer){
-                button.setText("Subscribe");
-            }else{
-                button.setText("UnSubscribe");
-            }
+            DatabaseHandler databaseHandler = new DatabaseHandler(context);
+
+
+
+
+            Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
+
+            //List<MallItem> mallList = databaseHandler.getAllSubs();
+           // for (MallItem mal : mallList) {
+            //    Log.d("CarInfo:", "ID " + mal.getId() + ", name " + mal.getName());
+           // }
+
+
 
              itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
               @Override
              public void onClick(View v) {
                   position = getAdapterPosition();
                   MallItem mall_item = arrayList.get(position);
+                  boolean frelo = true;
 
                   Button button = (Button) itemView.findViewById(R.id.SubsBut);
-                  if(changer){
+                  List<MallItem> mallList = databaseHandler.getAllSubs();
+                  for (MallItem mal : mallList) {
+                      if(mall_item.getName().equals(mal.getName())){
+                          frelo=false;
+                          break;
+                      }
+                  }
+
+                  if(frelo){
+                      databaseHandler.addSub(new MallItem(mall_item.getId(),mall_item.getName(),mall_item.getImageResourse(),true));
+                      Log.d("CarInfo:", "ID " + mall_item.getId() + "add" );
+                      //old
                       arrayList.get(position).ChangeSub();
                       button.setText("UnSubscribe");
                       changer = false;
                   }else{
+
+                      //old
+                      databaseHandler.deleteSub(mall_item);
                       arrayList.get(position).ChangeSub();
                       button.setText("Subscribe");
+                      Log.d("CarInfo:", "ID " + mall_item.getId() + "was delete" );
                       changer = true;
                   }
+
+
 
 
 

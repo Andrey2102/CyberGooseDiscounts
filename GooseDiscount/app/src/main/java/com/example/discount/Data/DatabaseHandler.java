@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.Util.Util;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,10 +72,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return mallItem;
     }
 
-    public List<MallItem> getAllSubs() {
+    public ArrayList<MallItem> getAllSubs() {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        List<MallItem> SubsList = new ArrayList<>();
+        ArrayList<MallItem> SubsList = new ArrayList<>();
 
         String selectAllSubs = "SELECT * FROM " + Util.TABLE_NAME;
         Cursor cursor = db.rawQuery(selectAllSubs, null);
@@ -133,5 +134,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return count;
 
+    }
+
+    public void Delete() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("DELETE FROM " + Util.TABLE_NAME);
     }
 }

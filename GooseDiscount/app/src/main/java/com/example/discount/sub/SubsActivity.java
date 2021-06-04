@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.discount.AboutActivity;
+import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.MainActivity;
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
@@ -22,11 +23,13 @@ import com.example.discount.R;
 import com.example.discount.SettingsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,13 @@ public class SubsActivity extends AppCompatActivity {
         ArrayList<MallItem> subsArray = new ArrayList();
         Intent intent = getIntent();
         Log.v("bl", "it is"+ intent.getStringExtra("nameSub"));
-        ArrayHelper help = new ArrayHelper();
 
-        subsArrayfull=help.getSomeArray();
-        for(MallItem item: subsArrayfull) {
-            if(item.getsubs()){subsArray.add(item);}
-        }
+        DatabaseHandler databaseHandler = new DatabaseHandler(this);
+        Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
+
+        ArrayList<MallItem> carList = databaseHandler.getAllSubs();
+        subsArray=carList;
+
 
         recyclerView=findViewById(R.id.recycle_sub);
         recyclerView.setHasFixedSize(true);
