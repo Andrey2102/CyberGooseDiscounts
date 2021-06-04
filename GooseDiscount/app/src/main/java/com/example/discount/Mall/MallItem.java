@@ -9,15 +9,31 @@ import com.example.discount.R;
 public class MallItem {
     private String imageResourse;
     private  String Name;
-    private String recipe;
+    private int id;
     private boolean subs;
 
 
-    public MallItem(String imageResourse, String text1, boolean subs, String recipe){
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setImageResourse(String imageResourse) {
+        this.imageResourse = imageResourse;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public MallItem() {
+    }
+
+    public MallItem(int id, String text1, String imageResourse, boolean subs){
+
         this.imageResourse= imageResourse;
         this.Name=text1;
         this.subs=subs;
-        this.recipe = recipe;
+        this.id = id;
     }
 
 
@@ -28,10 +44,9 @@ public class MallItem {
         return Name;
     }
     public boolean getsubs(){return subs; }
-    public String getRecipe(){return recipe;}
-
-
-
+    public int getId() {
+        return id;
+    }
 
     public void ChangeSub(){
         if(subs==true){

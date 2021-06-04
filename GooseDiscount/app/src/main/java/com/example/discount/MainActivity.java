@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         if(help.start){
             String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
         mallArray = new ArrayList();
-        mallArray.add(new MallItem(imageUri,"АТБ",false, "бла"));
-        mallArray.add(new MallItem(imageUri,"Cільпо", false,"бла"));
-        mallArray.add(new MallItem(imageUri,"Екомаркет", false,"бла"));
-        mallArray.add(new MallItem(imageUri,"Cільпо", false,"бла"));
-        mallArray.add(new MallItem(imageUri,"Екомаркет", false,"бла"));
+        mallArray.add(new MallItem(1,"АТБ",imageUri,false));
+        mallArray.add(new MallItem(2,"Cільпо",imageUri, false));
+        mallArray.add(new MallItem(3,"Екомаркет",imageUri, false));
+        mallArray.add(new MallItem(4,"Cільпо",imageUri, false));
+        mallArray.add(new MallItem(5,"Екомаркет",imageUri, false));
             help.start=false;
         Log.v("bc2", "it is"+ help.start);
         }else{

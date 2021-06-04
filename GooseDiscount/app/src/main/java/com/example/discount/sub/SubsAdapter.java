@@ -52,7 +52,6 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
             intent.putExtra("imageRes",mall_item.getImageResourse());
             intent.putExtra("nameRes", mall_item.getName());
             //intent.putExtra("DescriptionRes", mall_item.getAbout());
-            intent.putExtra("recipeRes",mall_item.getRecipe());
             context.startActivity(intent);
         }
     }

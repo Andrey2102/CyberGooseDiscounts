@@ -37,6 +37,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
 
 
+
         public MallHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -45,6 +46,8 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             Button button = (Button) itemView.findViewById(R.id.SubsBut);
             ArrayHelper.fullArray=arrayList;
 
+
+            
             if(changer){
                 button.setText("Subscribe");
             }else{
@@ -83,7 +86,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             Intent intent = new Intent(context, MallActivity.class);
             intent.putExtra("imageRes",mall_item.getImageResourse());
             intent.putExtra("nameRes", mall_item.getName());           ;
-            intent.putExtra("recipeRes",mall_item.getRecipe());
+
             context.startActivity(intent);
         }
     }
