@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.discount.Mall.MallItem;
 import com.example.discount.R;
+import com.example.discount.sub.ArrayHelper;
 import com.example.discount.sub.SubsActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             imageView=itemView.findViewById(R.id.mallimage);
             text1=itemView.findViewById(R.id.Name);
             Button button = (Button) itemView.findViewById(R.id.SubsBut);
+            ArrayHelper.fullArray=arrayList;
 
             if(changer){
                 button.setText("Subscribe");
@@ -51,17 +54,20 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
              itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
               @Override
              public void onClick(View v) {
-                  int position = getAdapterPosition();
+                  position = getAdapterPosition();
                   MallItem mall_item = arrayList.get(position);
-                  arrayList.get(position).ChangeSub();
+
                   Button button = (Button) itemView.findViewById(R.id.SubsBut);
                   if(changer){
+                      arrayList.get(position).ChangeSub();
                       button.setText("UnSubscribe");
                       changer = false;
                   }else{
+                      arrayList.get(position).ChangeSub();
                       button.setText("Subscribe");
                       changer = true;
                   }
+
 
 
               }});
@@ -101,7 +107,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
     @Override
     public void onBindViewHolder(@NonNull MallHolder holder, int position) {
         MallItem MallItem = arrayList.get(position);
-        holder.imageView.setImageResource(MallItem.getImageResourse());
+        Picasso.with(context).load(MallItem.getImageResourse()).into(holder.imageView);
         holder.text1.setText(MallItem.getName());
 
     }

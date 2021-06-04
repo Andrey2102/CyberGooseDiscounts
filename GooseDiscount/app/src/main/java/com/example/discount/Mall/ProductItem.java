@@ -1,20 +1,20 @@
 package com.example.discount.Mall;
 
 public class ProductItem {
-    private int imageProduct;
+    private String imageProduct;
     private  String NameProduct;
     private String valnew;
     private String valold;
     private String date;
 
-    public ProductItem(int imageResourse, String NameProduct, String valnew, String valold, String date){
+    public ProductItem(String imageResourse, String NameProduct, String valnew, String valold, String date){
         this.imageProduct= imageResourse;
         this.NameProduct=NameProduct;
         this.valnew=valnew;
         this.valold= valold;
         this.date= date;
     }
-    public int getimageProduct(){
+    public String getimageProduct(){
         return imageProduct;
     }
     public String getNameProduct(){

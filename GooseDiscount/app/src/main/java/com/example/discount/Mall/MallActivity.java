@@ -74,8 +74,9 @@ public class MallActivity extends AppCompatActivity {
 
 
         ArrayList<ProductItem> ProdArray = new ArrayList();
-        ProdArray.add(new ProductItem(R.drawable.bak, "Баклажан1", String.valueOf(100*i), String.valueOf(150*i), "04.05.21 - 05.02.21"));
-        ProdArray.add(new ProductItem(R.drawable.bak, "example", String.valueOf(80*i), String.valueOf(111*i), "04.05.21 - 05.02.21"));
+        String imageUri = "https://st2.depositphotos.com/1415902/7308/v/600/depositphotos_73089007-stock-illustration-eggplant-cartoon-isolated-on-white.jpg";
+        ProdArray.add(new ProductItem(imageUri, "Баклажан1", String.valueOf(100*i), String.valueOf(150*i), "04.05.21 - 05.02.21"));
+        ProdArray.add(new ProductItem(imageUri, "example", String.valueOf(80*i), String.valueOf(111*i), "04.05.21 - 05.02.21"));
         Intent intent = getIntent();
         recyclerView = findViewById(R.id.recycle_item);
         recyclerView.setHasFixedSize(true);

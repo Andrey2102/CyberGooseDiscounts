@@ -16,6 +16,7 @@ import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.Mall.ProductAdapter;
 import com.example.discount.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -68,7 +69,7 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
     @Override
     public void onBindViewHolder(@NonNull  SubsHolder holder, int position) {
         MallItem MallItem = subarrayList.get(position);
-        holder.imageView.setImageResource(MallItem.getImageResourse());
+        Picasso.with(context).load(MallItem.getImageResourse()).into(holder.imageView);
         holder.text1.setText(MallItem.getName());
         //holder.text2.setText(MallItem.getAbout());
     }

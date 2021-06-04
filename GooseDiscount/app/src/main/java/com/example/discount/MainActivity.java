@@ -39,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
         ArrayHelper help = new ArrayHelper();
         Log.v("bc", "it is"+ help.start);
         if(help.start){
+            String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
         mallArray = new ArrayList();
-        mallArray.add(new MallItem(R.drawable.gouse,"АТБ",false, "бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо", false,"бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет", false,"бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Cільпо", false,"бла"));
-        mallArray.add(new MallItem(R.drawable.gouse,"Екомаркет", false,"бла"));
+        mallArray.add(new MallItem(imageUri,"АТБ",false, "бла"));
+        mallArray.add(new MallItem(imageUri,"Cільпо", false,"бла"));
+        mallArray.add(new MallItem(imageUri,"Екомаркет", false,"бла"));
+        mallArray.add(new MallItem(imageUri,"Cільпо", false,"бла"));
+        mallArray.add(new MallItem(imageUri,"Екомаркет", false,"бла"));
             help.start=false;
         Log.v("bc2", "it is"+ help.start);
         }else{

@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.discount.R;
 
 public class MallItem {
-    private int imageResourse;
+    private String imageResourse;
     private  String Name;
     private String recipe;
     private boolean subs;
 
 
-    public MallItem(int imageResourse, String text1, boolean subs, String recipe){
+    public MallItem(String imageResourse, String text1, boolean subs, String recipe){
         this.imageResourse= imageResourse;
         this.Name=text1;
         this.subs=subs;
@@ -21,7 +21,7 @@ public class MallItem {
     }
 
 
-    public int getImageResourse(){
+    public String getImageResourse(){
         return imageResourse;
     }
     public String getName(){

@@ -1,5 +1,6 @@
 package com.example.discount.Mall;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.discount.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements Filterable {
     private ArrayList<ProductItem> arrayListProd;
     private ArrayList<ProductItem> arrayListProdSearch;
+    Context context;
 
     public ProductAdapter(ArrayList<ProductItem> arrayListProd){
         this.arrayListProd=arrayListProd;
@@ -37,7 +40,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductItem productItem = arrayListProd.get(position);
-        holder.imageproduct.setImageResource(productItem.getimageProduct());
+
+        Picasso.with(context).load(productItem.getimageProduct()).into(holder.imageproduct);
+
         holder.Nameproduct.setText(productItem.getNameProduct());
         holder.valnew.setText(productItem.getvalnew());
         holder.valold.setText(productItem.getvalold());
