@@ -53,7 +53,6 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
 
 
-
             Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
 
             //List<MallItem> mallList = databaseHandler.getAllSubs();
@@ -61,7 +60,11 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             //    Log.d("CarInfo:", "ID " + mal.getId() + ", name " + mal.getName());
            // }
 
-
+            if(changer){
+                button.setText("Subscribe");
+            }else{
+                button.setText("UnSubscribe");
+            }
 
              itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
               @Override
