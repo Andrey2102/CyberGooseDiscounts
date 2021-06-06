@@ -7,16 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
+import com.example.discount.Settings.SettingsActivity;
 import com.example.discount.sub.ArrayHelper;
 import com.example.discount.sub.SubsActivity;
 
@@ -62,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             ArrayHelper.fullArray=mallArray;
-
-            for (MallItem malsub : ArrayHelper.fullArray) {
-                //Log.d("ArrayHelp", malsub.getName()+"__"+ malsub.getsubs() );
-            }
 
         }
         ArrayHelper.counter=0;

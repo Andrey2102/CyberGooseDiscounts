@@ -1,4 +1,4 @@
-package com.example.discount;
+package com.example.discount.Settings;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -11,6 +11,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.discount.AboutActivity;
+import com.example.discount.MainActivity;
+import com.example.discount.R;
 import com.example.discount.sub.SubsActivity;
 
 public class SettingsActivity extends AppCompatActivity {

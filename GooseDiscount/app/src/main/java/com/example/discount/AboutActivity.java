@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.discount.Settings.SettingsActivity;
 import com.example.discount.sub.SubsActivity;
 
 public class AboutActivity extends AppCompatActivity {

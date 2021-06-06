@@ -57,9 +57,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
            // Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
 
-            for (MallItem malsub : ArrayHelper.fullArray) {
-                //Log.d("ArrayHelp", malsub.getName()+"__"+ malsub.getsubs() );
-            }
+
             i =ArrayHelper.counter;
             if(!arrayList.get(i).getsubs()){
                 //Log.d("ArrayHelp", arrayList.get(i).getName()+"__"+ arrayList.get(i).getsubs());

@@ -17,13 +17,11 @@ import android.view.MenuItem;
 import com.example.discount.AboutActivity;
 import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.MainActivity;
-import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.R;
-import com.example.discount.SettingsActivity;
+import com.example.discount.Settings.SettingsActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SubsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
