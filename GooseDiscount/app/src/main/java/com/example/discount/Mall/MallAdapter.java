@@ -26,6 +26,7 @@ import java.util.List;
 public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
     private ArrayList<MallItem>  arrayList;
+    public static int i = 0;
 
     Context context;
 
@@ -34,8 +35,9 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
     {
         public ImageView imageView;
         public TextView text1;
-        boolean changer = true;
+
         int position;
+        public Button button;
 
 
 
@@ -43,27 +45,30 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
         public MallHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            boolean changer = true;
             imageView=itemView.findViewById(R.id.mallimage);
             text1=itemView.findViewById(R.id.Name);
-            Button button = (Button) itemView.findViewById(R.id.SubsBut);
-            ArrayHelper.fullArray=arrayList;
-
+            button = (Button) itemView.findViewById(R.id.SubsBut);
 
             DatabaseHandler databaseHandler = new DatabaseHandler(context);
 
+            //databaseHandler.Delete();
 
 
-            Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
+           // Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
 
-            //List<MallItem> mallList = databaseHandler.getAllSubs();
-           // for (MallItem mal : mallList) {
-            //    Log.d("CarInfo:", "ID " + mal.getId() + ", name " + mal.getName());
-           // }
-
-            if(changer){
+            for (MallItem malsub : ArrayHelper.fullArray) {
+                //Log.d("ArrayHelp", malsub.getName()+"__"+ malsub.getsubs() );
+            }
+            i =ArrayHelper.counter;
+            if(!arrayList.get(i).getsubs()){
+                //Log.d("ArrayHelp", arrayList.get(i).getName()+"__"+ arrayList.get(i).getsubs());
                 button.setText("Subscribe");
-            }else{
+                ArrayHelper.counter++;
+            }else {
+                //Log.d("ArrayHelp", arrayList.get(i).getName()+"__"+ arrayList.get(i).getsubs());
                 button.setText("UnSubscribe");
+                ArrayHelper.counter++;
             }
 
              itemView.findViewById(R.id.SubsBut).setOnClickListener(new View.OnClickListener() {
@@ -75,6 +80,7 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
                   Button button = (Button) itemView.findViewById(R.id.SubsBut);
                   List<MallItem> mallList = databaseHandler.getAllSubs();
+
                   for (MallItem mal : mallList) {
                       if(mall_item.getName().equals(mal.getName())){
                           frelo=false;
@@ -84,23 +90,25 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
 
                   if(frelo){
                       databaseHandler.addSub(new MallItem(mall_item.getId(),mall_item.getName(),mall_item.getImageResourse(),true));
-                      Log.d("CarInfo:", "ID " + mall_item.getId() + "add" );
+                      Log.d("CarInfo:", "ID " + mall_item.getName() + "add" );
                       //old
                       arrayList.get(position).ChangeSub();
                       button.setText("UnSubscribe");
-                      changer = false;
+                  }else if(databaseHandler.getSubsCount()==1){
+                      databaseHandler.Delete();
+                      arrayList.get(position).ChangeSub();
+                      button.setText("Subscribe");
                   }else{
 
                       //old
                       databaseHandler.deleteSub(mall_item);
                       arrayList.get(position).ChangeSub();
                       button.setText("Subscribe");
-                      Log.d("CarInfo:", "ID " + mall_item.getId() + "was delete" );
-                      changer = true;
+                      Log.d("CarInfo:", "ID " + mall_item.getName() + "was delete" );
                   }
-
-
-
+                  for (MallItem mal : mallList) {
+                      Log.d("checkBD", mal.getName());
+                  }
 
 
               }});
@@ -112,7 +120,6 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
         public void onClick(View v) {
             int position = getAdapterPosition();
             MallItem mall_item = arrayList.get(position);
-            Log.v("bl", "it is"+ position);
             Intent intent = new Intent(context, MallActivity.class);
             intent.putExtra("imageRes",mall_item.getImageResourse());
             intent.putExtra("nameRes", mall_item.getName());           ;
@@ -143,26 +150,12 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
         Picasso.with(context).load(MallItem.getImageResourse()).into(holder.imageView);
         holder.text1.setText(MallItem.getName());
 
+
     }
 
     @Override
     public int getItemCount() {
         return arrayList.size();
-    }
-
-    public  static class mall_recipe extends  RecyclerView.ViewHolder{
-
-        public  ImageView  imageView;
-        public TextView text1;
-
-
-
-        public mall_recipe(@NonNull View itemView) {
-            super(itemView);
-            imageView=itemView.findViewById(R.id.mallimage);
-            text1=itemView.findViewById(R.id.Name);
-
-        }
     }
 
 }

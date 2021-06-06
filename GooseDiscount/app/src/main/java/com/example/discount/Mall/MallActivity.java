@@ -57,19 +57,17 @@ public class MallActivity extends AppCompatActivity {
         }
 
         String valuta = sharedPreferences.getString("CURRENCY", "1");
-        Log.i("chek","it is " + valuta);
 
         if(valuta.equals("1")){
             i=1;
         } else if(valuta.equals("0.030")){
             i= 0.030;
-            Log.i("chek","it was");
+
         }else if(valuta.equals("0.036")){
             i= 0.036;
-            Log.i("chek","it was too");
         }
 
-        Log.i("chek","it is " + i);
+
 
 
 

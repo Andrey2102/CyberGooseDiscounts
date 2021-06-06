@@ -14,12 +14,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.sub.ArrayHelper;
 import com.example.discount.sub.SubsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,23 +38,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Наша главная страница
-        ArrayHelper help = new ArrayHelper();
-        Log.v("bc", "it is"+ help.start);
-        if(help.start){
+
+
             String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
         mallArray = new ArrayList();
         mallArray.add(new MallItem(1,"АТБ",imageUri,false));
         mallArray.add(new MallItem(2,"Cільпо",imageUri, false));
         mallArray.add(new MallItem(3,"Екомаркет",imageUri, false));
-        mallArray.add(new MallItem(4,"Cільпо",imageUri, false));
-        mallArray.add(new MallItem(5,"Екомаркет",imageUri, false));
-            help.start=false;
-        Log.v("bc2", "it is"+ help.start);
-        }else{
-            mallArray=help.fullArray;
-        }
+        mallArray.add(new MallItem(4,"Cільпо2",imageUri, false));
+        mallArray.add(new MallItem(5,"Екомаркет2",imageUri, false));
 
-        help.fullArray=mallArray;
+
+        DatabaseHandler databaseHandler = new DatabaseHandler(this);
+        List<MallItem> mallList = databaseHandler.getAllSubs();
+        if(mallList!= null) {
+            for (MallItem mal : mallArray) {
+                for (MallItem malsub : mallList) {
+                    if (mal.getName().equals(malsub.getName())) {
+                            mal.ChangeSub();
+
+                            break;
+                    }
+                }
+            }
+            ArrayHelper.fullArray=mallArray;
+
+            for (MallItem malsub : ArrayHelper.fullArray) {
+                //Log.d("ArrayHelp", malsub.getName()+"__"+ malsub.getsubs() );
+            }
+
+        }
+        ArrayHelper.counter=0;
+
+
+
 
 
         recyclerView=findViewById(R.id.recycle);

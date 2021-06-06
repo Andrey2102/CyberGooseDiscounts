@@ -43,6 +43,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
+        contentValues.put(Util.KEY_ID,mallItem.getId());
         contentValues.put(Util.KEY_NAME, mallItem.getName());
         contentValues.put(Util.KEY_IMAGE, mallItem.getImageResourse());
 

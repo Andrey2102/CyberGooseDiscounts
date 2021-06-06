@@ -36,16 +36,13 @@ public class SubsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subs);
 
-        ArrayList<MallItem> subsArrayfull = new ArrayList();
-        ArrayList<MallItem> subsArray = new ArrayList();
-        Intent intent = getIntent();
-        Log.v("bl", "it is"+ intent.getStringExtra("nameSub"));
+        ArrayList<MallItem> subsArray ;
 
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
         Log.d("CarsCount:", String.valueOf(databaseHandler.getSubsCount()));
 
-        ArrayList<MallItem> carList = databaseHandler.getAllSubs();
-        subsArray=carList;
+        ArrayList<MallItem> subList = databaseHandler.getAllSubs();
+        subsArray=subList;
 
 
         recyclerView=findViewById(R.id.recycle_sub);
