@@ -120,7 +120,8 @@ public class MallAdapter extends RecyclerView.Adapter<MallAdapter.MallHolder> {
             MallItem mall_item = arrayList.get(position);
             Intent intent = new Intent(context, MallActivity.class);
             intent.putExtra("imageRes",mall_item.getImageResourse());
-            intent.putExtra("nameRes", mall_item.getName());           ;
+            intent.putExtra("nameRes", mall_item.getName());
+            intent.putExtra("Id",String.valueOf(mall_item.getId()));
 
             context.startActivity(intent);
         }

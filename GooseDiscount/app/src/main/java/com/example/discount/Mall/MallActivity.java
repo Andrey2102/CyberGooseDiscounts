@@ -27,8 +27,12 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.discount.API.HttpClient;
 import com.example.discount.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MallActivity extends AppCompatActivity {
@@ -36,6 +40,7 @@ public class MallActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<ProductItem> ProdArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +76,28 @@ public class MallActivity extends AppCompatActivity {
 
 
 
-        ArrayList<ProductItem> ProdArray = new ArrayList();
-        String imageUri = "https://st2.depositphotos.com/1415902/7308/v/600/depositphotos_73089007-stock-illustration-eggplant-cartoon-isolated-on-white.jpg";
-        ProdArray.add(new ProductItem(imageUri, "Баклажан1", String.valueOf(100*i), String.valueOf(150*i), "04.05.21 - 05.02.21"));
-        ProdArray.add(new ProductItem(imageUri, "example", String.valueOf(80*i), String.valueOf(111*i), "04.05.21 - 05.02.21"));
+        ProdArray = new ArrayList();
         Intent intent = getIntent();
+        HttpClient client=new HttpClient();
+        Thread MallList = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    ProdArray = client.readProduct(intent.getStringExtra("Id"));
+                }catch (IOException e)
+                {
+                    e.printStackTrace();
+                }catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+        MallList.start();
+        try {
+            MallList.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         recyclerView = findViewById(R.id.recycle_item);
         recyclerView.setHasFixedSize(true);
         adapter = new ProductAdapter(ProdArray);

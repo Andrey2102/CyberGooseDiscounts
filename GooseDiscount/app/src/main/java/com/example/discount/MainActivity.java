@@ -42,30 +42,25 @@ public class MainActivity extends AppCompatActivity {
         //Наша главная страница
 
 
-            String imageUri = "https://i.imgur.com/tGbaZCY.jpg";
-        mallArray = new ArrayList();
-        mallArray.add(new MallItem(1,"АТБ",imageUri,false));
-        mallArray.add(new MallItem(2,"Cільпо",imageUri, false));
-        mallArray.add(new MallItem(3,"Екомаркет",imageUri, false));
-        mallArray.add(new MallItem(4,"Cільпо2",imageUri, false));
-        mallArray.add(new MallItem(5,"Екомаркет2",imageUri, false));
+
 
         HttpClient client=new HttpClient();
-        new Thread(new Runnable() {
+        Thread MallList = new Thread(new Runnable() {
             public void run() {
                 try {
                     mallArray = client.readMall();
                 }catch (IOException e)
                 {
-
+                    e.printStackTrace();
                 }catch (JSONException e)
                 {
-
+                    e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        MallList.start();
         try {
-            Thread.sleep(1200);
+            MallList.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

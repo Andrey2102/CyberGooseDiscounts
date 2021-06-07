@@ -35,7 +35,7 @@ public class JsonParser {
                 JSONArray JsArr=new JSONArray(response);
                 for (int i=0;i<JsArr.length();i++) {
                         JSONObject js=JsArr.getJSONObject(i);
-                        productItems.add(new ProductItem(js.getString("imageLink"),js.getString("name"),js.getString("newPrice"),
+                        productItems.add(new ProductItem(js.getString("imageLink"),js.getString("name"),js.getString("newPrice"), //Комаентарий для владика(Здесь)
                                 js.getString("oldPrice"), dateFormat.format(cal.getTime())));
                 }
                 return productItems;
