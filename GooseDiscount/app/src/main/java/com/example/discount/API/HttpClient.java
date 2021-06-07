@@ -3,6 +3,7 @@ package com.example.discount.API;
 import android.util.Log;
 
 import com.example.discount.Mall.MallItem;
+import com.example.discount.Mall.ProductItem;
 
 import org.json.JSONException;
 
@@ -54,6 +55,40 @@ public class HttpClient {
         }
 
         return mallItems;
+    }
+
+    public ArrayList<ProductItem> readProduct(String id) throws IOException, JSONException {
+        String requestUrl = "https://cybergooseapi.azurewebsites.net/api/Discount/"+id;
+        ArrayList<ProductItem> productItems =new ArrayList<ProductItem>();
+        HttpURLConnection connection=null;
+        try {
+            URL url = new URL(requestUrl);
+            connection = (HttpURLConnection) url.openConnection();
+
+            connection.setRequestMethod("GET");
+            connection.connect();
+
+            InputStream in;
+            int status = connection.getResponseCode();
+            if (status != HttpURLConnection.HTTP_OK) {
+                in = connection.getErrorStream();
+            } else {
+                in = connection.getInputStream();
+            }
+
+            String response = convertStreamToString(in);
+            productItems=jsonParser.GetProduct(response);
+        }catch(Exception ex0)
+        {
+            Log.d("Error : ",ex0.toString());
+        }
+        finally
+        {
+            if(connection!=null){connection.disconnect(); 	}
+
+        }
+
+        return productItems;
     }
 
     private String convertStreamToString(InputStream stream) throws IOException {
