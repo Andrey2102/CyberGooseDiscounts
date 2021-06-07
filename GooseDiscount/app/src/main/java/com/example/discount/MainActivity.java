@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.discount.API.HttpClient;
 import com.example.discount.Data.DatabaseHandler;
 import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
@@ -18,6 +19,9 @@ import com.example.discount.Settings.SettingsActivity;
 import com.example.discount.sub.ArrayHelper;
 import com.example.discount.sub.SubsActivity;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +50,25 @@ public class MainActivity extends AppCompatActivity {
         mallArray.add(new MallItem(4,"Cільпо2",imageUri, false));
         mallArray.add(new MallItem(5,"Екомаркет2",imageUri, false));
 
+        HttpClient client=new HttpClient();
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    mallArray = client.readMall();
+                }catch (IOException e)
+                {
+
+                }catch (JSONException e)
+                {
+
+                }
+            }
+        }).start();
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
         List<MallItem> mallList = databaseHandler.getAllSubs();
