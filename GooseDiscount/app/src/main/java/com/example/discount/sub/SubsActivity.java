@@ -3,11 +3,15 @@ package com.example.discount.sub;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NavUtils;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -41,6 +45,17 @@ public class SubsActivity extends AppCompatActivity {
 
         ArrayList<MallItem> subList = databaseHandler.getAllSubs();
         subsArray=subList;
+
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.subsACT);
+
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(!sharedPreferences.getBoolean("OTHER",true)){
+            layout.setBackgroundColor(Color.WHITE);
+
+        }else{
+            layout.setBackgroundColor(Color.parseColor("#353434"));
+
+        }
 
 
         recyclerView=findViewById(R.id.recycle_sub);

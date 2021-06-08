@@ -2,14 +2,20 @@ package com.example.discount;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.discount.API.HttpClient;
 import com.example.discount.Data.DatabaseHandler;
@@ -39,6 +45,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.mainACT);
+
+
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(!sharedPreferences.getBoolean("OTHER",true)){
+            layout.setBackgroundColor(Color.WHITE);
+
+
+        }else{
+            layout.setBackgroundColor(Color.parseColor("#353434"));
+
+
+        }
         //Наша главная страница
 
 

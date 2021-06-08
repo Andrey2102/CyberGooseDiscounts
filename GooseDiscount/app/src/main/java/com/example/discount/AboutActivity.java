@@ -3,13 +3,18 @@ package com.example.discount;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NavUtils;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.discount.Settings.SettingsActivity;
@@ -26,7 +31,21 @@ public class AboutActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
 
         }
+
+
         TextView view = findViewById(R.id.about_text);
+
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.aboutACT);
+        final TextView title = findViewById(R.id.about_text);
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if(!sharedPreferences.getBoolean("OTHER",true)){
+            layout.setBackgroundColor(Color.WHITE);
+            title.setTextColor(Color.parseColor("#353434"));
+        }else{
+            layout.setBackgroundColor(Color.parseColor("#353434"));
+            title.setTextColor(Color.parseColor("#F3F3F3"));
+        }
+
         view.setText("Нас называют гиками и красноглазиками, обычные люди думают, что мы живем в серверных или у мамы в подвале, едим один дошик и моемся жидкостью для чистки мониторов (на самом деле это не совсем правда).\n" +
                 "Мы занимаемся только оригинальными и интересными проектами какими бы сложными и длинными они не были, так как всегда ищем способ показать наш креатив =D.\n" +
                 "Support:\n" +

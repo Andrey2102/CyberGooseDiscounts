@@ -27,6 +27,8 @@ public class SettingsActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
 
         }
+
+
     }
 
     @Override

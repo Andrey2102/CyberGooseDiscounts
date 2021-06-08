@@ -52,9 +52,10 @@ public class MallActivity extends AppCompatActivity {
        double i=1;
         TextView Titlel = findViewById(R.id.TitletextView);
 
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.thisid);
         final TextView title = findViewById(R.id.TitletextView);
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if(!sharedPreferences.getBoolean("OTHER",true)){
             layout.setBackgroundColor(Color.WHITE);
             title.setTextColor(Color.parseColor("#353434"));
