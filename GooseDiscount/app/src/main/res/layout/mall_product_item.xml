@@ -25,12 +25,13 @@
             android:id="@+id/NameProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
             android:layout_toEndOf="@+id/product_image"
             android:layout_toRightOf="@+id/product_image"
             android:text="Баклажан"
             android:textColor="@color/black"
-            android:textSize="26dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
         <TextView
@@ -102,6 +103,7 @@
             android:layout_toRightOf="@id/product_image"
             android:text="04.05.21 - 05.02.21"
             android:textColor="@color/black"
+            android:gravity="center"
             android:textSize="16dp" />
 
 

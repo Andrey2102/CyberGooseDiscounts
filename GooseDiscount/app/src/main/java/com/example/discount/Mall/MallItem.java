@@ -48,13 +48,16 @@ public class MallItem {
         return id;
     }
 
-    public void ChangeSub(){
-        if(subs==true){
-            subs=false;
-        }else {subs=true;}
-
-
+    public void ChangeSub() {
+        if (subs == true) {
+            subs = false;
+        } else {
+            subs = true;
+        }
     }
+
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.discount.Mall;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -41,6 +42,7 @@ public class MallActivity extends AppCompatActivity {
     private ProductAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<ProductItem> ProdArray;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,11 @@ public class MallActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        for(ProductItem item: ProdArray){
+            item.ChangeValue(i);
+        }
+
         recyclerView = findViewById(R.id.recycle_item);
         recyclerView.setHasFixedSize(true);
         adapter = new ProductAdapter(ProdArray);

@@ -26,5 +26,20 @@ public class ProductItem {
     public String getvalold(){return valold;}
     public String getdate(){return date;}
 
+    public void ChangeValue(Double i){
+        double calc=roundAvoid(Double.parseDouble(valnew)*i,2);
+        this.valnew=Double.toString(calc);
+        calc=roundAvoid(Double.parseDouble(valold)*i,2);
+        this.valold=Double.toString(calc);
+    }
+
+    private static double roundAvoid(double value, int places) {
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    }
+
+
+
+
 
 }
