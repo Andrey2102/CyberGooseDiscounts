@@ -82,6 +82,7 @@ public class MallActivity extends AppCompatActivity {
         ProdArray = new ArrayList();
         Intent intent = getIntent();
         HttpClient client=new HttpClient();
+        Log.i("Id from subs",intent.getStringExtra("Id"));
         Thread MallList = new Thread(new Runnable() {
             public void run() {
                 try {

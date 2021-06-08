@@ -16,13 +16,24 @@ import com.example.discount.Mall.MallAdapter;
 import com.example.discount.Mall.MallItem;
 import com.example.discount.Mall.ProductAdapter;
 import com.example.discount.R;
+import com.pixplicity.sharp.Sharp;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import okhttp3.Cache;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
 
     private ArrayList<MallItem> subarrayList;
+    private static OkHttpClient httpClient;
     Context context;
     public SubsAdapter(ArrayList<MallItem> arrayList,Context context){
         this.subarrayList=arrayList;
@@ -51,6 +62,7 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
             Intent intent = new Intent(context, MallActivity.class);
             intent.putExtra("imageRes",mall_item.getImageResourse());
             intent.putExtra("nameRes", mall_item.getName());
+            intent.putExtra("Id",String.valueOf(mall_item.getId()));
             //intent.putExtra("DescriptionRes", mall_item.getAbout());
             context.startActivity(intent);
         }
@@ -68,6 +80,27 @@ public class SubsAdapter extends RecyclerView.Adapter<SubsAdapter.SubsHolder> {
     @Override
     public void onBindViewHolder(@NonNull  SubsHolder holder, int position) {
         MallItem MallItem = subarrayList.get(position);
+        if (httpClient == null) {
+            httpClient = new OkHttpClient.Builder()
+                    .cache(new Cache(context.getCacheDir(), 5 * 1024 * 1014))
+                    .build();
+        }
+
+        Request request = new Request.Builder().url(MallItem.getImageResourse()).build();
+        httpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                InputStream stream = response.body().byteStream();
+                Sharp.loadInputStream(stream).into(holder.imageView);
+                stream.close();
+            }
+        });
         Picasso.with(context).load(MallItem.getImageResourse()).into(holder.imageView);
         holder.text1.setText(MallItem.getName());
         //holder.text2.setText(MallItem.getAbout());
